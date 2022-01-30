@@ -13,13 +13,13 @@ Sub Button1_Click()
             Dim selectedWorksheet As Worksheet
             Set selectedWorksheet = Worksheets(chkBox.Caption)
             
-            'Create row counter for selected worksheet
+            'Create row counter for selected worksheet (start from row number 3)
             Dim i As Integer
-            i = 1
+            i = 3
             
-            'Loop through 1st column as long as there is some data
-            Do While selectedWorksheet.Cells(i, 1).Value <> ""
-                MsgBox selectedWorksheet.Cells(i, 1).Value
+            'Loop through 2nd column as long as there is some data (consider merged cells)
+            Do While GetMergedValue(selectedWorksheet.Cells(i, 2)) <> ""
+                MsgBox GetMergedValue(selectedWorksheet.Cells(i, 2))
                 i = i + 1
             Loop
 
