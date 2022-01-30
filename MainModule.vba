@@ -18,7 +18,7 @@ Sub Button1_Click()
             i = 3
             
             'Loop through 2nd column as long as there is some data (consider merged cells)
-            Do While GetMergedValue(selectedWorksheet.Cells(i, 2)) <> ""
+            Do While Not IsEmpty(GetMergedValue(selectedWorksheet.Cells(i, 2)))
                 MsgBox GetMergedValue(selectedWorksheet.Cells(i, 2))
                 i = i + 1
             Loop
