@@ -2,6 +2,9 @@ Sub Button1_Click()
 
     'Create variable for checkbox
     Dim chkBox As CheckBox
+    'Create row counter for raports
+    Dim raportCounter As Integer
+    raportCounter = 5
 
     'Loop through each checkbox on active sheet
     For Each chkBox In ActiveSheet.CheckBoxes
@@ -32,7 +35,13 @@ Sub Button1_Click()
                     If Not IsEmpty(selectedWorksheet.Cells(i, 3)) Then
                     
                         'Something was selected from the dropdown
-                        MsgBox GetMergedValue(selectedWorksheet.Cells(i, 1)) & ", " & deliverableTitle & ", " & selectedWorksheet.Cells(i, 3)
+                        'MsgBox GetMergedValue(selectedWorksheet.Cells(i, 1)) & ", " & deliverableTitle & ", " & selectedWorksheet.Cells(i, 3)
+                        'Copy values to ActiveSheet
+                        Cells(raportCounter, 5).Value = GetMergedValue(selectedWorksheet.Cells(i, 1))
+                        Cells(raportCounter, 6).Value = deliverableTitle
+                        Cells(raportCounter, 7).Value = selectedWorksheet.Cells(i, 3)
+
+                        raportCounter = raportCounter + 1
                     End If
                 End If
 
